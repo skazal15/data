@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Early Warning Forecasting System -- Dashboard</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <!-- Custom fonts for this template-->
+    <link href="{{ url_for('static',filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet"
+          type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="{{ url_for('static',filename='css/bootstrap-select.css') }}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+    <!-- Custom styles for this template-->
+    <link href="{{ url_for('static',filename='css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+</head>
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+    
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Data Setting</div>
+            </a>
+    
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+    
+            <!-- Nav Item - Dashboard -->
+    
+    
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <form class="form-group" style="text-align:center;" method="POST" action="/show">
+                <!-- Heading -->
+                <div class="sidebar-brand-text mx-3" style="color:white;">
+                    Instance
+                </div>
+    
+                <select class="selectpicker " data-live-search="true" name="instance" >
+                    {% for i in range(0, instancelen) %}
+                    <option>{{ instances[i] }}</option>
+                    {% endfor %}
+    
+    
+                </select>
+    
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+    
+                <!-- Heading -->
+                <br><br>
+                <input type="submit" value="Submit" class="btn btn-success" style="color:white;">
+            </form>
+    
+        </ul>
+        <!-- End of Sidebar -->
+    
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+    
+            <!-- Main Content -->
+            <div id="content">
+    
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+    
+                    <!-- Topbar Search -->
+                    <h3>Instance Update</h3>
+    
+                </nav>
+                <!-- End of Topbar -->
+                
+                <!-- Begin Page Content -->
+                {% if show_results == "false" %}
+                <p style="text-align:center;margin-top:15%">
+                    <i class="fas fa-spinner fa-5x" style="color:#1c5d3c;"></i>
+                    <br/>
+                    <br/>
+                   Select your instance
+                </p>
+                <div class="container-contact100" style="display:none;">
+                <div class="container-fluid" style="display:none;">
+                
+                {% elif show_results == "show" %}
+                <div class="container-show">
+                    <form class="form-group" style="text-align:center;" method="POST" action="/edit">
+                    <div class="wrap-input100 validate-input bg1" data-validate="Please Type Instance Name">
+                        <span class="label-input100">INSTANCE NAME *</span>
+                        <input class="input100" type="text" name="instan" placeholder="Enter Instance  Name" value="{{instance}}">
+                    </div>
+                    <div class="wrap-input100 validate-input bg1" data-validate="Please Type Instance Name">
+                        <span class="label-input100">INTERVAL DATA *</span>
+                        <input class="input100" type="text" name="interval" placeholder="Enter Instance  Name" value="{{interval}}">
+                    </div>
+                    <div class="wrap-input100 validate-input bg1" data-validate="Please Type Instance Name">
+                        <span class="label-input100">FOLDER NAME *</span>
+                        <input class="input100" type="text" name="foldername" placeholder="Enter Instance  Name" value="{{foldername}}">
+                    </div>
+                    <div class="wrap-input100 validate-input bg1" data-validate="Please Type Instance Name">
+                        <span class="label-input100">Measure *</span>
+                        <input class="input100" type="text" name="measure" placeholder="Enter Instance  Name" value="{{measure}}">
+                    </div>
+                        <input type="submit" value="edit" class="btn btn-success" style="color:white;">
+                    </form>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="container-fluid">
+                           <form class="contact100-form validate-form" method="POST" action="/download">
+                               <div class="container-contact100-form-btn">
+                                   <button class="contact100-form-btn" type="submit">
+                                       <span>
+                                           Download
+                                           <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                                       </span>
+                                   </button>
+                               </div>
+                           </form>   
+                       </div>    
+                   </div>
+               </div>
+                <div class="container-contact100" style="display:none;">
+                
+
+                {% elif show_results == "edit" %}
+                <div class="container-show" style="display:none;"></div>
+                <div class="container-contact100">
+                    <div class="wrap-contact100">
+                        <span class="contact100-form-title">
+                                Instances Settings
+                        </span>
+                        <form class="contact100-form validate-form" enctype="multipart/form-data" method="POST" action="/add">
+                            <div class="wrap-input100 validate-input bg1" data-validate="Please Type Instance Name">
+                                <span class="label-input100">INSTANCE NAME *</span>
+                                <input class="input100" type="text" name="instance1" placeholder="Enter Instance  Name" value="{{instance}}">
+                            </div>
+                            
+                            <div class="wrap-input100 input100-select bg1">
+                                <p>data interval lama:{{interval}}</p>
+                                <span class="label-input100">Data Interval *</span>
+                                <div>
+                                    <select class="js-select2" name="interval1">
+                                        {% for i in range(0, intervallen) %}
+                                         <option>{{ intervals[i] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <div class="dropDownSelect2"></div>
+                                </div>
+                            </div>
+                            <p>folder Name:{{foldername}}</p>
+                            <p><input type="file" id="imgInp" name="file"></p> 
+                            <div class="wrap-input100 validate-input bg1" data-validate="Please Type Instance Name">
+                                <span class="label-input100">Measure *</span>
+                                <input class="input100" type="text" name="measure" placeholder="Enter Instance  Name" value="{{measure}}">
+                            </div>
+                            <div class="container-contact100-form-btn">
+                                <button class="contact100-form-btn" type="submit">
+                                    <span>
+                                        Upload
+                                        <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="container-fluid" style="display:none;"></div>
+    
+                    {% else %}
+                    <div class="container-show" style="display:none;"></div>
+                    <div class="container-fluid" style="display:none;">
+                        {% endif %}
+                    <!-- /.container-fluid -->
+    
+                </div>
+                <!-- End of Main Content -->
+    
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Said.io 2020</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+    
+            </div>
+            <!-- End of Content Wrapper -->
+    
+        </div>
+        <!-- End of Page Wrapper -->
+    
+        <!-- Bootstrap core JavaScript-->
+        <script src="{{ url_for('static',filename='vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='css/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    
+        <!-- Core plugin JavaScript-->
+        <script src="{{ url_for('static',filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    
+        <!-- Custom scripts for all pages-->
+        <script src="{{ url_for('static',filename='js/sb-admin-2.min.js') }}"></script>
+        <!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/select2/select2.min.js"></script>
+        <script>
+            $(".js-select2").each(function(){
+                $(this).select2({
+                    minimumResultsForSearch: 20,
+                    dropdownParent: $(this).next('.dropDownSelect2')
+                });
+    
+    
+                $(".js-select2").each(function(){
+                    $(this).on('select2:close', function (e){
+                        if($(this).val() == "Please chooses") {
+                            $('.js-show-service').slideUp();
+                        }
+                        else {
+                            $('.js-show-service').slideUp();
+                            $('.js-show-service').slideDown();
+                        }
+                    });
+                });
+            })
+        </script>
+    <!--===============================================================================================-->
+        <script src="vendor/daterangepicker/moment.min.js"></script>
+        <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/noui/nouislider.min.js"></script>
+        <script>
+            var filterBar = document.getElementById('filter-bar');
+    
+            noUiSlider.create(filterBar, {
+                start: [ 1500, 3900 ],
+                connect: true,
+                range: {
+                    'min': 1500,
+                    'max': 7500
+                }
+            });
+    
+            var skipValues = [
+            document.getElementById('value-lower'),
+            document.getElementById('value-upper')
+            ];
+    
+            filterBar.noUiSlider.on('update', function( values, handle ) {
+                skipValues[handle].innerHTML = Math.round(values[handle]);
+                $('.contact100-form-range-value input[name="from-value"]').val($('#value-lower').html());
+                $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
+            });
+        </script>
+    <!--===============================================================================================-->
+        <script src="js/main.js"></script>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-23581568-13');
+    </script>
+</div>
+</body>
+</html>
