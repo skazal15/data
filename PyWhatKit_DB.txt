@@ -64,3 +64,64 @@ Time: 21:40
 Phone Number: +6282283027464
 Message: tes
 --------------------
+Date: 31/8/2022
+Time: 9:41
+Phone Number: +6285384741287
+Message: warning ⚠️ ,utilisasi storage sistem Emas1 diprediksi akan mencapai 76.87 pada tanggal: 2023-01-04
+--------------------
+Date: 31/8/2022
+Time: 9:44
+Phone Number: +6285384741287
+Message: warning ⚠️ ,utilisasi storage sistem Emas1 diprediksi akan mencapai 76.87 pada tanggal: 2023-01-04
+--------------------
+Date: 31/8/2022
+Time: 11:46
+Phone Number: +6282283027464
+Message: warning ⚠️ ,utilisasi storage sistem Emas1 diprediksi akan mencapai 76.87 pada tanggal: 2023-01-04
+--------------------
+Date: 31/8/2022
+Time: 11:46
+Phone Number: +6282283027464
+Image: <_io.BufferedReader name='c:\\AI\\forecast\\ewfs\\warning.png'>
+Caption: grafik utilisasi storage sistem
+--------------------
+Date: 31/8/2022
+Time: 14:1
+Phone Number: +6287881198719
+Message: warning ⚠️ ,utilisasi storage sistem Emas1 diprediksi akan mencapai 76.87 pada tanggal: 2023-01-04
+--------------------
+Date: 31/8/2022
+Time: 14:24
+Phone Number: +6281233662306
+Message: warning ⚠️ ,utilisasi storage sistem Emas1 diprediksi akan mencapai 76.87 pada tanggal: 2023-01-04
+--------------------
+Date: 31/8/2022
+Time: 15:1
+Phone Number: +6282216577989
+Message: warning ⚠️ ,utilisasi storage sistem Emas1 diprediksi akan mencapai 76.87 pada tanggal: 2023-01-04
+--------------------
+Date: 31/8/2022
+Time: 16:27
+Phone Number: +6282121206729
+Message: warning ⚠️ ,utilisasi storage sistem Emas1 diprediksi akan mencapai 76.87 pada tanggal: 2023-01-04
+--------------------
+Date: 31/8/2022
+Time: 16:28
+Phone Number: +6282121206729
+Message: warning ⚠️ ,utilisasi storage sistem Emas1 diprediksi akan mencapai 76.87 pada tanggal: 2023-01-04
+--------------------
+Date: 1/9/2022
+Time: 15:20
+Phone Number: +6287853005400
+Message: warning ⚠️ ,utilisasi storage sistem Emas1 diprediksi akan mencapai 76.87 pada tanggal: 2023-01-04
+--------------------
+Date: 1/9/2022
+Time: 15:21
+Phone Number: +6287853005400
+Message: warning ⚠️ ,utilisasi storage sistem Emas1 diprediksi akan mencapai 76.87 pada tanggal: 2023-01-04
+--------------------
+Date: 1/9/2022
+Time: 15:25
+Phone Number: +6287853005400
+Message: warning ⚠️ ,utilisasi storage sistem Emas1 diprediksi akan mencapai 76.87 pada tanggal: 2023-01-04
+--------------------

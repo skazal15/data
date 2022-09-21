@@ -21,6 +21,7 @@ import matplotlib.pyplot as plt # Import matplotlib for data visualisation
 import random
 import seaborn as sns
 from datetime import date
+from odm.data import alo
 
 all_colors = {'Autoregresif': '#FF9EDD',
               'SimpleExpSmoothing': '#FFFD7F',
@@ -278,3 +279,25 @@ for i in range(len(instances)):
 exadata = round(sum(ex),2)
 exa=str(exadata)+' GB'
 
+
+def doc(instance):
+    key2='automl'
+    df_real = pd.read_csv('real.csv')
+    df_predict = pd.read_csv('predicted.csv')
+    df_future = pd.read_csv('future.csv') 
+    prediction_date = df_future['ds'].tail(1).values
+    prediction_date = prediction_date[0]
+    predict = ((df_future['yhat1'].tail(1).values)/alo[instance])*100
+    predict = predict[0]
+    dates = df_real['ds'].values
+    dates = dates.tolist()
+    series = df_real['y'].values
+    series1 = series.tolist()
+    predictiondat = df_predict['yhat1'].values
+    predictiondat = predictiondat.tolist()
+    dates2 = df_future['ds'].values
+    dates2 = dates2.tolist()
+    series2 = df_future['yhat1'].values
+    predictdat1 = series2.tolist()
+    predictmax = max(predictdat1)
+    return(key2,instance,prediction_date,predict,dates,series1,predictiondat,predictdat1,dates2,predictmax)

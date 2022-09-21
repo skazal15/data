@@ -1,6 +1,6 @@
 from component.appflask import app
 from flask import render_template,session,redirect,url_for
-from core.analis import all_data
+from core.analis import all_data,doc
 from odm import data
 from odm.user import User
 from component.contoller import dashboard
@@ -23,22 +23,43 @@ def process(instancen):
         return redirect(url_for('login'))  
     i = instancen
     mer = data.measure[i]
-    for it in range(len(data.instances)):
-        if i == all_data[it][7]:
-            key2 = all_data[it][0]
-            prediction_date = all_data[it][1]
-            d = all_data[it][2]
-            series1 = all_data[it][3]
-            color = all_data[it][4]
-            predictiondat1 = all_data[it][5]
-            mse = all_data[it][6]
-            instance = all_data[it][7]
-            predict = round(all_data[it][8],2)
-            d1 = all_data[it][9]
-            predictdat1 = all_data[it][10]
+    if data.tipe[i] == 'real':
+        for it in range(len(data.instances)-1):
+            if i == all_data[it][7]:
+                key2 = all_data[it][0]
+                prediction_date = all_data[it][1]
+                dates = all_data[it][2]
+                series1 = all_data[it][3]
+                series1 = series1[0]
+                color = all_data[it][4]
+                predictiondat1 = all_data[it][5]
+                predictiondat1 = predictiondat1[0]
+                mse = all_data[it][6]
+                instance = all_data[it][7]
+                predict = round(all_data[it][8],2)
+                dates2 = all_data[it][9]
+                predictdat1 = all_data[it][10]
+                high = max(predictdat1)
+                low = 0
+                if high < 100:
+                    stepsize = 10
+                    high = high + 10
+                if high < 1000:
+                    stepsize = 100
+                    high = high + 100
+                else:
+                    stepsize = 1000
+                    high = high + 2000
+    else:
+        color = '#FFA646'
+        mse = 0
+        high = 1500
+        low = 0
+        stepsize = 100
+        key2,instance,prediction_date,predict,dates,series1,predictiondat1,predictdat1,dates2,predictmax=doc(i)
     print(len(predictdat1))
     print(len(d1))
     return render_template('proses.html',key2=key2, show_results="true", instancelen = len(data.instances), instances=data.instances,
-                           mse=mse,
+                           mse=mse,high=high,low=low,stepsize=stepsize,
                            predict=predict,storage=User.storage,
-                           prediction_date=prediction_date, dates=d, dates2=d1, series2=predictdat1, series=series1, color=color, predictiondat=predictiondat1, instance=instance,mer=mer)
+                           prediction_date=prediction_date, dates=dates, dates2=dates2, series2=predictdat1, series=series1, color=color, predictiondat=predictiondat1, instance=instance,mer=mer)

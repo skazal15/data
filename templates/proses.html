@@ -242,7 +242,7 @@
         labels: {{ dates|safe }},
         datasets: [
           {
-            data: [{% for item in series[0] %}
+            data: [{% for item in series %}
                     {{item}},
                    {% endfor %}],
             borderColor: [
@@ -253,7 +253,7 @@
             label: "Data"
           },
           {
-            data: [{% for item in predictiondat[0] %}
+            data: [{% for item in predictiondat %}
                     {{item}},
                    {% endfor %}],
             borderColor: [
@@ -294,9 +294,9 @@
               display: true,
               autoSkip: false,
               maxRotation: 0,
-              stepSize: 10,
-              min: 10,
-              max: 100,
+              stepSize: {{stepsize}},
+              min: {{low}},
+              max: {{high}},
               padding: 18,
               fontColor:"#6C7383"
             },
@@ -375,9 +375,9 @@
               display: true,
               autoSkip: false,
               maxRotation: 0,
-              stepSize: 10,
-              min: 10,
-              max: 100,
+              stepSize: {{stepsize}},
+              min: {{low}},
+              max: {{high}},
               padding: 18,
               fontColor:"#6C7383"
             },
@@ -418,14 +418,14 @@
           labels: {{ dates|safe }},
         datasets: [
           {
-            data: [{% for item in predictiondat[0] %}
+            data: [{% for item in predictiondat %}
                     {{item}},
                    {% endfor %}],
               backgroundColor: '#98BDFF'
             },
             {
               label: {{ dates|safe }},
-              data:  [{% for item in predictiondat[0] %}
+              data:  [{% for item in predictiondat %}
                     {{item}},
                    {% endfor %}],
               backgroundColor: '#4B49AC'
@@ -497,14 +497,14 @@
         labels: {{ dates|safe }},
         datasets: [
           {
-            data: [{% for item in predictiondat[0] %}
+            data: [{% for item in predictiondat %}
                     {{item}},
                    {% endfor %}],
               backgroundColor: '#98BDFF'
             },
             {
               label: {{ dates|safe }},
-              data:  [{% for item in predictiondat[0] %}
+              data:  [{% for item in predictiondat %}
                     {{item}},
                    {% endfor %}],
               backgroundColor: '#4B49AC'
@@ -572,7 +572,7 @@
       var areaData = {
         label: {{ dates|safe }},
         datasets: [{
-          data:  [{% for item in predictiondat[0] %}
+          data:  [{% for item in predictiondat %}
                     {{item}},
                    {% endfor %}],
             backgroundColor: [

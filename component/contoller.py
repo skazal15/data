@@ -12,7 +12,7 @@ def dashboard():
     persen = []
     predict = []
     mer = []
-    for it in range(0,len(data.instances)):
+    for it in range(0,len(data.instances)-1):
         prediction_date = all_data[it][1]
         datepred.append(prediction_date)
         lastusage.append(round(all_data[it][13],2))
@@ -23,7 +23,7 @@ def dashboard():
             persen.append(round(all_data[it][13]))
         mer.append(data.measure[all_data[it][7]])
     duedate = datepred[0]
-    for it in range(len(data.instances)):
+    for it in range(len(data.instances)-1):
         if all_data[it][1] == duedate:
             key2 = all_data[it][0]
             prediction_date1=all_data[it][1]
@@ -44,7 +44,7 @@ def dashboard():
 def fore():
     i = data.instances[1]
     mer = data.measure[i]
-    for it in range(len(data.instances)):
+    for it in range(len(data.instances)-1):
         if i == all_data[it][7]:
             key2 = all_data[it][0]
             prediction_date = all_data[it][1]

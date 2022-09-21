@@ -12,6 +12,6 @@ def done():
     if session['logged_in'] == 'false' or session['logged_in']=='':
         return redirect(url_for('login'))
     username = str(session.get('user',None))
-    return render_template('index2.html',show_results="false", instancelen = len(data.instances), instances=data.instances, key2="",
+    return render_template('index2.html',show_results="false", instancelen = len(data.instances)-1, instances=data.instances, key2="",
                     predict=predict, predictmax=predictmax,storage=User.storage,
                     prediction_date=datepred, dates=d1, color="#4747A1", predictiondat=predictdat1,max=predictmax,min=predictmin, mse=[], instance=instance,usern=User.name,due=due,lastusage=lastusage,persen=persen,mer=mer)
