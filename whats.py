@@ -1,8 +1,14 @@
 import pywhatkit
+from component.contoller import bot_data
+mon,per,dat,img = bot_data()
 #import smtplib
 #from email.mime.multipart import MIMEMultipart
 #from email.mime.text import MIMEText
-pywhatkit.sendwhatmsg_instantly("+6282283027464","tes",10)
+number="+6287853005400"
+cap = 'grafik utilisasi storage sistem '
+message='warning ⚠️ ,utilisasi storage sistem '+ mon +' diprediksi akan mencapai '+ per + ' pada tanggal: '+ dat
+pywhatkit.sendwhatmsg_instantly(number,message,10,tab_close=True)
+#pywhatkit.sendwhats_image(number,img,cap,10,tab_close=True)
 #message = "Your message" # Type your message
 #msg = MIMEMultipart()
 #password = "saidf221" # Type your password 

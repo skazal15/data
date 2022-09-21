@@ -111,7 +111,40 @@
               </form>
             </div>
           </div>
-        </div>        
+        </div>
+        <div class="row">
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <p class="card-title">Download Data</p>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="table-responsive">
+                      <input type="text" id="mySearch" onkeyup="myFunc()" placeholder="Search for storage"/>
+                      <table id="example" class="display expandable-table" style="width:100%">
+                        <thead>
+                          <tr>
+                            <th>Instance</th>
+                            <th></th>
+                            <th>Download</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        {% for i in range(0,instancelen) %}
+                        <tbody>
+                          <th>{{instance[i]}}</th>
+                          <th></th>
+                          <th><a href="/return-files/{{instance[i]}}">Download</a></th>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>        
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
